@@ -1,0 +1,19 @@
+<view class="container">
+  <template is="head" data="{{title: 'image'}}"/>
+<button class="btn" bindtap="feed">feed</button>
+  <view class="page-body">
+    <view class="page-section page-section-gap">
+      <view class="page-section-title">Your first cat</view>
+      <view class="page-section-ctn">
+        <image class="image" src="../../resource/cat.jpg"/>
+      </view>
+      <view>
+          <button class="btn" type="primary">
+              See your friends pets
+          </button>
+      </view>
+    </view>
+  </view>
+
+  <template is="foot"/>
+</view>
