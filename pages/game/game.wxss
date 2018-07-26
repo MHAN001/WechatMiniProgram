@@ -2,8 +2,9 @@
     text-align: center;
   }
   
-  .image {
+  .cat {
     margin-top: 30rpx;
-    width: 580rpx;
-    height: 400rpx;
+    margin-left: 120px;
+    width: 500rpx;
+    height: 500rpx;
   }

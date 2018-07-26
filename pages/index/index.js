@@ -16,10 +16,26 @@ Page({
     })
   },
   startGame: function(){
+    
     wx.navigateTo({
       url:'../game/game'
     }
     )
+  },
+  animation: function(res){
+    console.log(res);
+    console.log(res.touches[0]);
+    var x=182;
+    var y=458+100;
+    this.setData({
+      rippleStyle:''
+    });
+    this.setData({
+      rippleStyle:'top:'+y+'px;left:'+x+'px;-webkit-animation: ripple 0.4s linear;animation:ripple 0.4s linear;'
+    });
+    // wx.navigateTo({
+    //   url: '../animation/animation'
+    // })
   },
   onLoad: function () {
     if (app.globalData.userInfo) {

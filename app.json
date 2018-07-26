@@ -2,6 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
+    "pages/animation/animation",
     "pages/game/game"
   ],
   "window":{

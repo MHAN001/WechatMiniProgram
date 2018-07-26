@@ -10,7 +10,7 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <view>
+  <view class="ripple" style="{{rippleStyle}}"></view>
     <button bindtap="startGame">Click to Start</button>
-  </view>
+    <button bindtap="animation" class="btn2">animation</button>
 </view>
