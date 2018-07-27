@@ -1,6 +1,0 @@
-<view>
-    <view class="ripple" style="{{rippleStyle}}"></view>
-    <view class="container">
-        <button  bindtouchstart="containerTap">tst</button>
-    </view>
-</view>

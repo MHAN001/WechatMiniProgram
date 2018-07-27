@@ -10,6 +10,4 @@
       </view>
     </view>
   </view>
-
-  <template is="foot"/>
 </view>

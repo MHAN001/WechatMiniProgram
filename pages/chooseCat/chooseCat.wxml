@@ -1,0 +1,8 @@
+<swiper class='swiperClass' autoplay indicator-color="#a39f99" indicator-active-color="#f49641" indicator-dots  interval="2000" duration="1000" previous-margin="30px" next-margin="30px" circular bindchange="bindchange" style='height: 500px; width: 100%'>
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+        <image src="{{item}}" class="slide-image {{swiperIndex == index ? 'active' : 'quiet'}}" mode='aspectFill'>
+        </image>
+        </swiper-item>
+    </block>
+</swiper>

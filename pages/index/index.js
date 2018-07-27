@@ -33,6 +33,9 @@ Page({
     this.setData({
       rippleStyle:'top:'+y+'px;left:'+x+'px;-webkit-animation: ripple 0.4s linear;animation:ripple 0.4s linear;'
     });
+    wx.navigateTo({
+      url: '../chooseCat/chooseCat'
+    });
     // wx.navigateTo({
     //   url: '../animation/animation'
     // })
