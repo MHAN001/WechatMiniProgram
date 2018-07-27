@@ -1,5 +1,9 @@
 const util = require('../../utils/util');
+
 Page({
+    data: {
+        foods : 0
+    },
     feed: function () {
         wx.chooseImage({
             count: 1,
@@ -39,7 +43,11 @@ Page({
                                         },
                                         method: 'POST',
                                         success: function (resDecrypt) {
-                                            console.log(resDecrypt.data.stepInfoList[0].step);
+                                            var tmp = resDecrypt.data.stepInfoList[0].step;
+                                            console.log(tmp);
+                                            that.setData({
+                                                foods : tmp
+                                            });
                                             // var runData = JSON.parse(resDecrypt.data.data);
                                             // console.log(runData);
                                         }

@@ -1,16 +1,12 @@
 <view class="container">
+  <view class="page-title">You have {{foods}} foods available</view>
   <template is="head" data="{{title: 'image'}}"/>
-<button class="btn" bindtap="feed">feed</button>
+  <button class="btn-primary" bindtap="feed">feed</button>
+  <button class="btn-primary" bindtap="getSteps">Foods</button>
   <view class="page-body">
     <view class="page-section page-section-gap">
-      <view class="page-section-title">Your first cat</view>
       <view class="page-section-ctn">
         <image class="cat" src="../../resource/cat.jpg"/>
-      </view>
-      <view>
-          <button class="btn" type="primary" bindtap="getSteps">
-              wechat steps
-          </button>
       </view>
     </view>
   </view>

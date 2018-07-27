@@ -13,7 +13,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.2.1",
 	"appid": "wx1730947c98cfd8ad",
-	"projectname": "NewMiniProgram",
+	"projectname": "MiniProgram",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

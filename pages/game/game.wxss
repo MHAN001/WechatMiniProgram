@@ -1,10 +1,21 @@
 .page-section-ctn {
     text-align: center;
   }
-  
+ .page-title{
+   margin-left: -30%;
+   margin-top: -15%;
+ } 
   .cat {
     margin-top: 30rpx;
     margin-left: 120px;
     width: 500rpx;
     height: 500rpx;
+  }
+
+  .btn-primary{
+    color:#fff;
+    background-color:#007bff;
+    border-color:#007bff;
+    width: 40%;
+    margin-left: 0%
   }
