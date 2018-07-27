@@ -11,9 +11,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
-	"appid": "wx26f098a4803f8d2e",
-	"projectname": "MiniGame",
+	"libVersion": "2.2.1",
+	"appid": "wx1730947c98cfd8ad",
+	"projectname": "NewMiniProgram",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
