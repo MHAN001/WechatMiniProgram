@@ -6,11 +6,17 @@ Page({
       '../../resource/dog.png',
       '../../resource/rabbit.png'
     ],
-    swiperIndex: 0 //这里不写第一次启动展示的时候会有问题
+    swiperIndex: 0 
   },
-bindchange(e) {
+  bindchange(e) {
     this.setData({
       swiperIndex: e.detail.current
     })
+  },
+  select(o){
+    var id = o.target.id;
+    wx.redirectTo({
+      url: "../game/game?id="+id
+    });
   }
 })

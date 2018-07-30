@@ -1,12 +1,11 @@
 <view class="container">
   <view class="page-title">You have {{foods}} foods available</view>
-  <template is="head" data="{{title: 'image'}}"/>
   <button class="btn-primary" bindtap="feed">feed</button>
   <button class="btn-primary" bindtap="getSteps">Foods</button>
   <view class="page-body">
     <view class="page-section page-section-gap">
-      <view class="page-section-ctn">
-        <image class="cat" src="../../resource/cat.jpg"/>
+      <view class="page-section-ctn" wx:for="{{imgUrls}}"  wx:if="{{index == imgId}}" >
+        <image class="cat"  src = "{{item}}"/>
       </view>
     </view>
   </view>
