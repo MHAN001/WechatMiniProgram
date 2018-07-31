@@ -1,5 +1,8 @@
+.bg-blue {
+  background-color: lightblue;
+}
 .page-section-ctn {
-    text-align: center;
+      text-align: center;
   }
  .page-title{
    margin-left: -30%;
@@ -18,4 +21,11 @@
     border-color:#007bff;
     width: 40%;
     margin-left: 0%
+  }
+
+  .movable-container{
+    width: 100%;
+    height: 100px;
+    background-color: red;
+    background-attachment: fixed;
   }

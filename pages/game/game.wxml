@@ -1,12 +1,18 @@
-<view class="container">
-  <view class="page-title">You have {{foods}} foods available</view>
-  <button class="btn-primary" bindtap="feed">feed</button>
-  <button class="btn-primary" bindtap="getSteps">Foods</button>
-  <view class="page-body">
-    <view class="page-section page-section-gap">
-      <view class="page-section-ctn" wx:for="{{imgUrls}}"  wx:if="{{index == imgId}}" >
+<view class="bg-blue">
+  <view class="">You have {{foods}} foods available</view>
+  <view>
+    <button class="btn-primary" bindtap="feed">feed</button>
+    <button class="btn-primary" bindtap="getSteps">Foods</button>
+    <view> <!--page-section page-section-gap -->
+      <view wx:for="{{imgUrls}}"  wx:if="{{index == imgId}}" ><!--  -->
         <image class="cat"  src = "{{item}}"/>
       </view>
     </view>
   </view>
+  <movable-area style="height: 215px; width: 100%; background: green; opacity: 0.5;">
+    <canvas class="page-body-ball" show="{{true}}" canvas-id="big-ball">big ball</canvas>
+    <canvas class="page-body-ball" show="{{true}}" canvas-id="small-ball">hello</canvas>
+    <movable-view direction="all" style="height: 15px; width: 15px; background: blue; margin-top: 100%; margin-left: 50%;" x="{{a}}" y="{{b}}">
+    </movable-view>
+  </movable-area>
 </view>

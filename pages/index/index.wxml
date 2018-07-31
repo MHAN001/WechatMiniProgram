@@ -11,6 +11,6 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <view class="ripple" style="{{rippleStyle}}"></view>
-    <button bindtap="startGame">Click to Start</button>
-    <button bindtap="animation" class="btn2">chooseCat</button>
+    <!-- <button bindtap="startGame">Click to Start</button> -->
+    <button bindtap="animation" class="btn-primary btn2" >Choose Pets</button>
 </view>

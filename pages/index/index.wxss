@@ -1,5 +1,5 @@
 /**index.wxss**/
-
+@import "../../resource/css/bootstrap.wxss";
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -45,5 +45,5 @@ button{
   }
 }
 .btn2{
-  top: 80px;
+  margin-top: 0%;
 }
