@@ -11,8 +11,8 @@ Page({
         this.drawBigFood();
         var that = this;
         this.position = {
-            x: 155,
-            y: 155,
+            x: 20,
+            y: 20,
             vx: 0,
             vy: 0,
             ax: 0,
@@ -30,7 +30,7 @@ Page({
           })
 
         this.interval = setInterval(function () {
-            that.drawBigFood()
+            that.drawsmallFood()
         }, 17)
     },
     data: {
@@ -115,7 +115,7 @@ Page({
     drawBigFood: function(){
         var context = wx.createContext()
         context.beginPath(0)
-        context.arc(151, 151, 140, 0, Math.PI * 2)
+        context.rect(0, 0, 100, 100) //Math.PI * 2
         context.setFillStyle('#ffffff')
         context.setStrokeStyle('#aaaaaa')
         context.fill()
@@ -149,7 +149,7 @@ Page({
         }
         strokeStyle = '#ff0000'
         }
-
+        console.log("px"+p.x+ "py:"+p.y);
         var context = wx.createContext()
         context.beginPath(0)
         context.arc(p.x, p.y, 15, 0, Math.PI * 2)

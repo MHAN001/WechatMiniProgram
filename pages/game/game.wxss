@@ -29,3 +29,11 @@
     background-color: red;
     background-attachment: fixed;
   }
+
+  .ball {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200;
+    height: 200px;
+  }
