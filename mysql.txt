@@ -1,3 +1,24 @@
 host: mpdatabase
 username: helloworld
 pwd: Mpdatabase!
+
+Database Structure
+  User_Table(
+    username,PK
+  )
+
+  Pet_Table(
+    petID,PK,
+    pet info(name, age, weight ....),
+    isReturned, boolean ( a pet will be return to nature when its age reaches 10 days, 
+                          and its total score will be evaluated, user get corresponding
+                          Exp and level up, after a pet is returned, a user can adopt a
+                          new pet in the system)
+    Owner, FK -> User_table.username
+  )
+
+Database CRUD:
+  1)C: create user and pet
+  2)R: read pet data of a specific user from Database (create view in database, use view directly)
+  3)U: update pet data
+  4)D: no need to implement delete function for users
