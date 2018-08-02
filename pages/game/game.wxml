@@ -1,5 +1,6 @@
 <view class="bg-blue">
   <view class="">You have {{foods}} foods available</view>
+  <view class="">You have eat {{eats}} foods today</view>
   <view>
     <button class="btn-primary" bindtap="feed">feed</button>
     <button class="btn-primary" bindtap="getSteps">Foods</button>
@@ -10,9 +11,9 @@
     </view>
   </view>
   <movable-area style="height: 215px; width: 100%; background: green; opacity: 0.5;">
-    <canvas class="ball" show="{{true}}" canvas-id="big-ball"></canvas>
+    <canvas class="ball" show="{{true}}" canvas-id="big-ball">1234</canvas>
     <movable-view direction="all" style="height: 30; width: 30px; background: blue; margin-top: 100%; margin-left: 50%;" x="{{a}}" y="{{b}}">
-      <canvas class="ball" show="{{true}}" canvas-id="small-ball"></canvas>
+    <!-- <canvas class="ball" show="{{true}}" canvas-id="small-ball">123</canvas> -->
     </movable-view>
   </movable-area>
 </view>

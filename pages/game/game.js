@@ -19,22 +19,23 @@ Page({
             ay: 0
         }
         wx.onAccelerometerChange(function (res) {
-            that.setData({
-              x: res.x.toFixed(2),
-              y: res.y.toFixed(2),
-              z: res.z.toFixed(2)
-            })
-            that.position.ax = Math.sin(res.x * Math.PI / 2)
-            that.position.ay = -Math.sin(res.y * Math.PI / 2)
-            //that.drawSmallBall()
+          that.setData({
+            x: res.x.toFixed(2),
+            y: res.y.toFixed(2),
+            z: res.z.toFixed(2)
           })
+          that.position.ax = Math.sin(res.x * Math.PI / 2)
+          that.position.ay = -Math.sin(res.y * Math.PI / 2)
+          // that.drawSmallBall()
+        })
 
         this.interval = setInterval(function () {
             that.drawsmallFood()
-        }, 17)
+        }, 50);
     },
     data: {
         foods: 0,
+        eats:0,
         imgUrls: [
             '../../resource/cat.jpg',
             '../../resource/elegant.png',
@@ -121,8 +122,8 @@ Page({
         context.fill()
         // context.stroke()
         wx.drawCanvas({
-        canvasId: 'big-ball',
-        actions: context.getActions()
+          canvasId: 'big-ball',
+          actions: context.getActions()
         })
     },
     drawsmallFood: function(){
@@ -133,35 +134,65 @@ Page({
         p.y = p.y + p.vy
         p.vx = p.vx + p.ax
         p.vy = p.vy + p.ay
+        console.log("original: px" + p.x + " py:" + p.y+" p.vx:"+p.vx+" p.vy:"+p.vy);
 
-        if (Math.sqrt(Math.pow(Math.abs(p.x) - 151, 2) + Math.pow(Math.abs(p.y) - 151, 2)) >= 115) {
-        if (p.x > 151 && p.vx > 0) {
-            p.vx = 0
+        //specify the border of coordinator X:
+        if((p.x < 7.5 && p.vx < 0) || (p.x > 300 && p.vx > 0)){
+          p.vx = 0;
         }
-        if (p.x < 151 && p.vx < 0) {
-            p.vx = 0
+
+        //specify the border of coordinator Y:
+        if((p.y < 7.5 && p.vy < 0) || (p.y > 200 && p.vy > 0)){
+          p.vy = 0;
         }
-        if (p.y > 151 && p.vy > 0) {
-            p.vy = 0
+
+        // if (Math.sqrt(Math.pow(Math.abs(p.x) - 151, 2) + Math.pow(Math.abs(p.y) - 151, 2)) >= 115)         // {
+        //   if (p.x > 151 && p.vx > 0) {
+        //     p.vx = 0
+        //   }
+        //   if (p.x < 151 && p.vx < 0) {
+        //     p.vx = 0
+        //   }
+        //   if (p.y > 151 && p.vy > 0) {
+        //     p.vy = 0
+        //   }
+        //   if (p.y < 151 && p.vy < 0) {
+        //     p.vy = 0
+        //   }
+        //   strokeStyle = '#ff0000'
+        // }
+        //console.log("px"+p.x+ "py:"+p.y);
+        
+
+        //below condition to test if the ball will be eaten
+        //TODO write condition test code for below if condition
+        if(p.y > 10){
+          var context = wx.createContext()
+          context.beginPath(0)
+          context.arc(p.x, p.y, 15, 0, Math.PI * 2)
+          context.setFillStyle('#1aad19')
+          context.setStrokeStyle(strokeStyle)
+          context.fill()
+          // context.stroke()
+          wx.drawCanvas({
+            canvasId: 'big-ball',
+            actions: context.getActions()
+          })
         }
-        if (p.y < 151 && p.vy < 0) {
-            p.vy = 0
+        //below box: functions to be called after the ball is eaten.
+        else{
+          this.eatFood();
         }
-        strokeStyle = '#ff0000'
-        }
-        console.log("px"+p.x+ "py:"+p.y);
-        var context = wx.createContext()
-        context.beginPath(0)
-        context.arc(p.x, p.y, 15, 0, Math.PI * 2)
-        context.setFillStyle('#1aad19')
-        context.setStrokeStyle(strokeStyle)
-        context.fill()
-        // context.stroke()
-        wx.drawCanvas({
-        canvasId: 'small-ball',
-        actions: context.getActions()
-        })
     },
+    
+    eatFood:function(){
+      //TODO: method not implemented yet.
+      this.eats = this.eats+ 1;
+      
+      //need to post to server side to store the infomation.
+      //i.e. store the infomation into database.
+    },
+
     onUnload: function () {
         clearInterval(this.interval)
     }
