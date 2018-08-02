@@ -1,0 +1,3 @@
+host: mpdatabase
+username: helloworld
+pwd: Mpdatabase!
