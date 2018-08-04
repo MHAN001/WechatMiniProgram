@@ -8,30 +8,37 @@ Page({
         })
     },
     onReady: function() {
-        this.drawBigFood();
-        var that = this;
-        this.position = {
-            x: 20,
-            y: 20,
-            vx: 0,
-            vy: 0,
-            ax: 0,
-            ay: 0
-        }
-        wx.onAccelerometerChange(function (res) {
-          that.setData({
-            x: res.x.toFixed(2),
-            y: res.y.toFixed(2),
-            z: res.z.toFixed(2)
-          })
-          that.position.ax = Math.sin(res.x * Math.PI / 2)
-          that.position.ay = -Math.sin(res.y * Math.PI / 2)
-          // that.drawSmallBall()
-        })
+      this.drawBigFood();
+      var that = this;
 
-        this.interval = setInterval(function () {
-            that.drawsmallFood()
-        }, 50);
+      this.positions = new Array(
+        { x: 20, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.8 },
+        { x: 40, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.6},
+        { x: 60, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 1 },
+        { x: 80, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.7 },
+        { x: 100, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.9 }
+      );
+        
+      wx.onAccelerometerChange(function (res) {
+        that.setData({
+          x: res.x.toFixed(2),
+          y: res.y.toFixed(2),
+          z: res.z.toFixed(2)
+        })
+        //console.log("type of positions"+typeof(that.positions));
+
+        for(var i = 0;i<5;i++){
+          var p = that.positions[i];
+          //console.log("type of p:"+typeof(p));
+          p.ax = Math.sin(res.x * Math.PI / 2)
+          p.ay = -Math.sin(res.y * Math.PI / 2)
+        }
+        // that.drawSmallBall()
+      });
+
+      this.interval = setInterval(function () {
+        that.drawsmallFood();
+      }, 50);
     },
     data: {
         foods: 0,
@@ -127,68 +134,77 @@ Page({
         })
     },
     drawsmallFood: function(){
-        var p = this.position
+        var points = this.positions
         var strokeStyle = 'rgba(1,1,1,0)'
 
-        p.x = p.x + p.vx
-        p.y = p.y + p.vy
-        p.vx = p.vx + p.ax
-        p.vy = p.vy + p.ay
-        console.log("original: px" + p.x + " py:" + p.y+" p.vx:"+p.vx+" p.vy:"+p.vy);
-
-        //specify the border of coordinator X:
-        if((p.x < 7.5 && p.vx < 0) || (p.x > 300 && p.vx > 0)){
-          p.vx = 0;
-        }
-
-        //specify the border of coordinator Y:
-        if((p.y < 7.5 && p.vy < 0) || (p.y > 200 && p.vy > 0)){
-          p.vy = 0;
-        }
-
-        // if (Math.sqrt(Math.pow(Math.abs(p.x) - 151, 2) + Math.pow(Math.abs(p.y) - 151, 2)) >= 115)         // {
-        //   if (p.x > 151 && p.vx > 0) {
-        //     p.vx = 0
-        //   }
-        //   if (p.x < 151 && p.vx < 0) {
-        //     p.vx = 0
-        //   }
-        //   if (p.y > 151 && p.vy > 0) {
-        //     p.vy = 0
-        //   }
-        //   if (p.y < 151 && p.vy < 0) {
-        //     p.vy = 0
-        //   }
-        //   strokeStyle = '#ff0000'
-        // }
-        //console.log("px"+p.x+ "py:"+p.y);
+        //iterate 5 balls, cal their positions
+        for(var i = 0;i<5;i++)
+        {
+          var p = points[i];
+          p.x = p.x + p.vx
+          p.y = p.y + p.vy
+          p.vx = p.vx + p.ax*p.rate
+          p.vy = p.vy + p.ay*p.rate
         
 
-        //below condition to test if the ball will be eaten
-        //TODO write condition test code for below if condition
-        if(p.y > 10){
-          var context = wx.createContext()
-          context.beginPath(0)
-          context.arc(p.x, p.y, 15, 0, Math.PI * 2)
-          context.setFillStyle('#1aad19')
-          context.setStrokeStyle(strokeStyle)
-          context.fill()
-          // context.stroke()
-          wx.drawCanvas({
-            canvasId: 'big-ball',
-            actions: context.getActions()
-          })
+          //specify the border of coordinator X:
+          if((p.x < 7.5 && p.vx < 0) || (p.x > 300 && p.vx > 0)){
+            p.vx = 0;
+          }
+
+          //specify the border of coordinator Y:
+          if((p.y < 7.5 && p.vy < 0) || (p.y > 200 && p.vy > 0)){
+            p.vy = 0;
+          }
         }
-        //below box: functions to be called after the ball is eaten.
-        else{
-          this.eatFood();
+
+          // if (Math.sqrt(Math.pow(Math.abs(p.x) - 151, 2) + Math.pow(Math.abs(p.y) - 151, 2)) >= 115)
+          //   if (p.x > 151 && p.vx > 0) {
+          //     p.vx = 0
+          //   }
+          //   if (p.x < 151 && p.vx < 0) {
+          //     p.vx = 0
+          //   }
+          //   if (p.y > 151 && p.vy > 0) {
+          //     p.vy = 0
+          //   }
+          //   if (p.y < 151 && p.vy < 0) {
+          //     p.vy = 0
+          //   }
+          //   strokeStyle = '#ff0000'
+          // }
+          //console.log("px"+p.x+ "py:"+p.y);
+        
+        var context = wx.createContext()
+        var eatFood = 5;
+        for(var i = 0;i<5;i++)
+        {
+          var p = points[i];
+          if(p.y>10){
+            context.beginPath(0);
+            context.arc(p.x, p.y, 15, 0, Math.PI * 2);
+            context.setFillStyle('#1aad19');
+            context.setStrokeStyle(strokeStyle);
+            context.fill();
+            eatFood--;
+          }
         }
+        wx.drawCanvas({
+          canvasId: 'big-ball',
+          actions: context.getActions()
+        })
+        this.EatFood(eatFood);
     },
     
-    eatFood:function(){
+    EatFood:function(num){
       //TODO: method not implemented yet.
-      this.eats = this.eats+ 1;
-      
+      this.eats = this.eats+ num;
+      if(num != 0){
+          wx.request({
+              url:""
+          })
+      }
+
       //need to post to server side to store the infomation.
       //i.e. store the infomation into database.
     },
