@@ -1,6 +1,6 @@
-const util = require('../../utils/util');
-var imgId;
-var food;
+const util = require('../../utils/util')
+var imgId
+var food
 Page({
     onLoad: function (option) {
         console.log("this is option id"+option.id + "this is option age"+ option.age);
@@ -136,17 +136,18 @@ Page({
     },
     
     EatFood:function(){
+        var that = this
       clearInterval(this.interval);
       console.log("start request!");
       wx.request({
-        url:'http://localhost:5000/api/game/update/testuser',
+        url:'http://localhost:49660/api/game/update/testuser',
         method: 'POST',
         data:'1/5',
         success:function(res){
-          console.log("success feed");
-          // this.setData({
-          //   eats:eats+5
-          // });
+          console.log(res);
+          that.setData({
+            eats: eats+5
+          });
         }
       })
     },
@@ -172,7 +173,7 @@ Page({
                                     const encryptedData = resRun;
                                     console.log(encryptedData);
                                     wx.request({
-                                        url: 'http://localhost:51000/api/values/' + '123',
+                                        url: 'http://localhost:49660/api/values/' + '123',
                                         data: {
                                             encryptedData: resRun.encryptedData,
                                             iv: resRun.iv,
