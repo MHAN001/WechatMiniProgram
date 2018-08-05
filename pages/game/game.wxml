@@ -1,16 +1,17 @@
 
 <view class="bg-blue flex-wrp" style="flex-direction: column;">
   <view class="flex-item firstSection">
-    <view>You have {{foods}} foods available</view>
-    <view>You have eat {{eats}} foods today</view>
+    <view>Pet Name: {{name}}</view>
+    <view>Pet Weight: {{weight}}</view>
+    <view>Pet Age: {{age}}</view>
+    <view>Pet Exercise: {{petexercise}}</view>
   </view>
   <view class="flex-item imgSection">
     <button class="btn-primary" bindtap="EatFood">Test_EatFood</button>
-    <button class="btn-primary" bindtap="getSteps">Foods</button>
-      <view wx:for="{{imgUrls}}"  wx:if="{{index == imgId}}" ><!--  -->
-        age:{{age}}
-        <image class="cat"  src = "{{item}}"/>
-      </view>
+    <!-- <button class="btn-primary" bindtap="getSteps">Foods</button> -->
+    <view wx:for="{{imgUrls}}"  wx:if="{{index == imgNum}}" ><!--  -->
+      <image class="cat"  src = "{{item}}"/>
+    </view>
   </view>
   <view class="flex-item foodSection">
     <canvas class="ball" show="{{true}}" canvas-id="big-ball"></canvas>

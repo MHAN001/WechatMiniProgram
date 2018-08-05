@@ -1,0 +1,4 @@
+<!--pages/userNameLogin/userNameLogin.wxml-->
+<!-- <text>pages/userNameLogin/userNameLogin.wxml</text> -->
+<input bindblur="getInput" type="text" placeholder="please enter username" />
+<button bindtap="startGame">Log In</button>

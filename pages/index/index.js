@@ -41,6 +41,14 @@ Page({
     //   url: '../animation/animation'
     // })
   },
+
+  usernameLogin:function(){
+    wx.navigateTo({
+      url: '../userNameLogin/userNameLogin',
+    });
+    
+  },
+
   onLoad: function () {
     // if (app.globalData.userInfo) {
     //   this.setData({
@@ -85,20 +93,20 @@ Page({
             console.log(res)
           }
         })
-        wx.request({
-          url:'http://localhost:49660/api/game/getpet/testuser',
-          method: 'GET',
-          success: function(res){
-            if(res.data.name != null){
-              var id = res.data.imageNum
-              wx.redirectTo({
-                url: '../game/game?id='+id+'&age=1'
-              })
-            }
-            else{
-            }
-          }
-        })
+        // wx.request({
+        //   url:'http://localhost:5000/api/game/getpet/testuser',
+        //   method: 'GET',
+        //   success: function(res){
+        //     if(res.data.name != null){
+        //       var id = res.data.imageNum
+        //       wx.redirectTo({
+        //         url: '../game/game?id='+id+'&age=1'
+        //       })
+        //     }
+        //     else{
+        //     }
+        //   }
+        // })
       }
     })
   },
@@ -109,5 +117,5 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
 })
