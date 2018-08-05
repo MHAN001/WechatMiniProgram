@@ -1,5 +1,6 @@
 .bg-blue {
   background-color: lightblue;
+  height: 100%;
 }
 .page-section-ctn {
       text-align: center;
@@ -32,12 +33,12 @@
   .foodSection{
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 235px;
   }
   .ball {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200;
-    height: 200px;
+    width: 100%;
+    height: 220px;
   }

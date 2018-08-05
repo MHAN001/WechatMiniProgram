@@ -7,14 +7,12 @@
     <view>Pet Exercise: {{petexercise}}</view>
   </view>
   <view class="flex-item imgSection">
-    <button class="btn-primary" bindtap="EatFood">Test_EatFood</button>
-    <!-- <button class="btn-primary" bindtap="getSteps">Foods</button> -->
     <view wx:for="{{imgUrls}}"  wx:if="{{index == imgNum}}" ><!--  -->
       <image class="cat"  src = "{{item}}"/>
     </view>
   </view>
   <view class="flex-item foodSection">
     <canvas class="ball" show="{{true}}" canvas-id="big-ball"></canvas>
-    <canvas class="ball" show="{{true}}" canvas-id="small-b all"></canvas>
+    <canvas class="ball" show="{{true}}" canvas-id="small-ball"></canvas>
   </view>
 </view>

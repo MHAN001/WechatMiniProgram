@@ -33,6 +33,7 @@ Page({
     this.setData({
       username: option.username
     })
+    this.getSteps()
     this.getPetData()
   },
 
@@ -46,7 +47,6 @@ Page({
           age: res.data.age,
           name: res.data.name,
           weight: res.data.weight,
-          petexercise: res.data.exer,
           imgNum: res.data.imageNum
         })
       }
@@ -116,7 +116,7 @@ Page({
                                   const encryptedData = resRun;
                                   console.log(encryptedData);
                                   wx.request({
-                                      url: 'http://localhost:5000/api/values/' + '123',
+                                      url: 'http://localhost:5000/api/decrypt/' + '123',
                                       data: {
                                           encryptedData: resRun.encryptedData,
                                           iv: resRun.iv,
@@ -124,10 +124,10 @@ Page({
                                       },
                                       method: 'POST',
                                       success: function (resDecrypt) {
-                                          var tmp = resDecrypt.data.stepInfoList[0].step;
+                                          var tmp = resDecrypt.data.stepInfoList[30].step;
                                           console.log(tmp);
                                           that.setData({
-                                              foods: tmp
+                                            petexercise: tmp
                                           });
                                           // var runData = JSON.parse(resDecrypt.data.data);
                                           // console.log(runData);
@@ -183,7 +183,7 @@ Page({
         }
 
         //specify the border of coordinator Y:
-        if((p.y < 7.5 && p.vy < 0) || (p.y > 200 && p.vy > 0)){
+        if((p.y < 7.5 && p.vy < 0) || (p.y > 180 && p.vy > 0)){
           p.vy = 0;
         }
       }
