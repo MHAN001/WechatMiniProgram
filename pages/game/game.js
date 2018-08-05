@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-const util = require('../../utils/util')
-var imgId
-var food
-=======
+
  const util = require('../../utils/util');
 // var imgId;
 // var food;
-var uname;
->>>>>>> ced28b93aa4ebf8500c7a21bc3e9f61f4264f59b
 Page({
   data: {
     username: '',
@@ -32,23 +26,22 @@ Page({
 
   onReady: function() {
     this.drawBigFood();
-    var that = this;
   },
 
 
   onLoad: function (option) {
-    uname = option.username;
-    var that = this;
-    that.getPetData();
+    this.setData({
+      username: option.username
+    })
+    this.getPetData()
   },
 
   getPetData:function(){
     var that = this;
     wx.request({
-      url: 'http://localhost:5000/api/game/getpet/' + uname,
+      url: 'http://localhost:5000/api/game/getpet?username=' + this.data.username,
       method: 'GET',
       success: function (res) {
-        console.log("start setting data");
         that.setData({
           age: res.data.age,
           name: res.data.name,
@@ -61,7 +54,6 @@ Page({
   },
 
   onReady: function() {
-    //console.log("username="+uname);
     this.drawBigFood();
     var that = this;
 
@@ -79,11 +71,9 @@ Page({
         y: res.y.toFixed(2),
         z: res.z.toFixed(2)
       })
-      //console.log("type of positions"+typeof(that.positions));
 
       for(var i = 0;i<5;i++){
         var p = that.positions[i];
-        //console.log("type of p:"+typeof(p));
         p.ax = Math.sin(res.x * Math.PI / 2)
         p.ay = -Math.sin(res.y * Math.PI / 2)
       }
@@ -121,13 +111,12 @@ Page({
                           grant_type: "authorization_code"
                       },
                       success: function (resSession) {
-                          console.log(resSession);   //TODO DELETE
                           wx.getWeRunData({
                               success(resRun) {
                                   const encryptedData = resRun;
                                   console.log(encryptedData);
                                   wx.request({
-                                      url: 'http://localhost:51000/api/values/' + '123',
+                                      url: 'http://localhost:5000/api/values/' + '123',
                                       data: {
                                           encryptedData: resRun.encryptedData,
                                           iv: resRun.iv,
@@ -252,7 +241,6 @@ Page({
   },
   EatFood:function(){
     clearInterval(this.interval);
-    console.log("start request!");
     var that = this;
     wx.request({
       url:'http://localhost:5000/api/game/update/testuser',

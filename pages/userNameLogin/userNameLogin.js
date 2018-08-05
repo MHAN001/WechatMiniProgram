@@ -72,33 +72,37 @@ Page({
 
   startGame:function(){
     var username = this.data.inputvalue;
+    console.log(username)
     wx.request({
-      url:'http://localhost:5000/api/game/hasuser/'+username,
+      url:'http://localhost:5000/api/game/hasuser?username='+username,
       method:'GET',
       success:function(res){
         console.log(res.data);
         if(res.data == 0){
           wx.request({
-            url:'http://localhost:5000/api/game/createuser/'+username,
+            url:'http://localhost:5000/api/game/createuser?username='+username,
             method:'GET',
             success:function(res){
+              console.log("call back"+username)
               wx.redirectTo({
-                url: '../chooseCat/chooseCat?username='+username,
+                url: '../chooseCat/chooseCat?username='+ username,
               })
             }
           })
         }
         else{
           wx.request({
-            url:'http://localhost:5000/api/game/haspet/'+username,
+            url:'http://localhost:5000/api/game/haspet?username='+username,
             method:'GET',
             success:function(res){
               if(res.data == 0){
+                console.log("username :"+ username)
                 wx.redirectTo({
                   url: '../chooseCat/chooseCat?username=' + username,
                 })
               }
               else{
+                console.log("else username :"+ username)
                 wx.redirectTo({
                   url:'../game/game?username='+username,
                 })

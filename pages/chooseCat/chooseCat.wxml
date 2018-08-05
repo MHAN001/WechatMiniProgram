@@ -1,4 +1,4 @@
-<input placeholder="please enter a pet name" bintblur="setPetName" />
+<input placeholder="please enter a pet name" type="text" bindinput="setPetName" auto-focus/>
 <view>
   <swiper class='swiperClass' autoplay indicator-color="#a39f99" indicator-active-color="#f49641" indicator-dots  interval="2000" duration="1000" previous-margin="30px" next-margin="30px" circular bindchange="bindchange" style='height: 500px; width: 100%'>
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">

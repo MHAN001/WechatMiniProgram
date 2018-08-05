@@ -1,5 +1,7 @@
 Page({
   data: {
+    username: '',
+    petname: '',
     imgUrls: [
       '../../resource/cat.jpg',
       '../../resource/elegant.png',
@@ -7,11 +9,12 @@ Page({
       '../../resource/rabbit.png'
     ],
     swiperIndex: 0 ,
-    username:'',
-    petname:''
   },
-  onLoad:function(option){
-    this.data.username = option.username;
+  onLoad: function(option){
+    console.log("chooscat parameter:"+option.username)
+    this.setData({
+      username : option.username
+    })
   },
 
   bindchange(e) {
@@ -20,22 +23,20 @@ Page({
     })
   },
 
-  setPetName:function(e){
+  setPetName: function(e){
     this.setData({
-      petname:e.detail.value,
+      petname: e.detail.value
     })
-    
   },
 
-  select(o){
+  select: function(){
     var that = this;
-    var petname = this.data.petname;
-    console.log("petname: " + petname);
+    console.log("petname: " + this.data.petname);
     wx.request({
-      url:'http://localhost:5000/api/game/createPet/'+that.data.username+"?urlnum=1&petname="+that.data.petname,
+      url:'http://localhost:5000/api/game/createPet?username='+that.data.username+'&urlnum=1&petname='+that.data.petname,
       method:'GET',
       success:function(res){
-        console.log(res.statusCode),
+        console.log("chooscat"+that.data.username)
         wx.redirectTo({
           url: '../game/game?username='+that.data.username,
         })
