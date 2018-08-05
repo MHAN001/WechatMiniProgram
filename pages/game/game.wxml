@@ -1,19 +1,18 @@
-<view class="bg-blue">
-  <view class="">You have {{foods}} foods available</view>
-  <view class="">You have eat {{eats}} foods today</view>
-  <view>
+
+<view class="bg-blue flex-wrp" style="flex-direction: column;">
+  <view class="flex-item firstSection">
+    <view>You have {{foods}} foods available</view>
+    <view>You have eat {{eats}} foods today</view>
+  </view>
+  <view class="flex-item imgSection">
     <button class="btn-primary" bindtap="EatFood">Test_EatFood</button>
     <button class="btn-primary" bindtap="getSteps">Foods</button>
-    <view> <!--page-section page-section-gap -->
       <view wx:for="{{imgUrls}}"  wx:if="{{index == imgId}}" ><!--  -->
         <image class="cat"  src = "{{item}}"/>
       </view>
-    </view>
   </view>
-  <movable-area style="height: 215px; width: 100%; background: green; opacity: 0.5;">
-    <canvas class="ball" show="{{true}}" canvas-id="big-ball">1234</canvas>
-    <movable-view direction="all" style="height: 30; width: 30px; background: blue; margin-top: 100%; margin-left: 50%;" x="{{a}}" y="{{b}}">
-    <!-- <canvas class="ball" show="{{true}}" canvas-id="small-ball">123</canvas> -->
-    </movable-view>
-  </movable-area>
+  <view class="flex-item foodSection">
+    <canvas class="ball" show="{{true}}" canvas-id="big-ball"></canvas>
+    <canvas class="ball" show="{{true}}" canvas-id="small-b all"></canvas>
+  </view>
 </view>
