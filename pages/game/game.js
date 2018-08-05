@@ -12,11 +12,11 @@ Page({
       var that = this;
 
       this.positions = new Array(
-        { x: 20, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.8 },
-        { x: 40, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.6},
-        { x: 60, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 1 },
-        { x: 80, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.7 },
-        { x: 100, y: 20, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.9 }
+        { x: 20, y: 80, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.8 },
+        { x: 40, y: 80, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.6},
+        { x: 60, y: 80, vx: 0, vy: 0, ax: 0, ay: 0, rate: 1 },
+        { x: 80, y: 80, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.7 },
+        { x: 100, y: 80, vx: 0, vy: 0, ax: 0, ay: 0, rate: 0.9 }
       );
         
       wx.onAccelerometerChange(function (res) {
@@ -176,37 +176,53 @@ Page({
           //console.log("px"+p.x+ "py:"+p.y);
         
         var context = wx.createContext()
-        var eatFood = 5;
+        var clearCanvas = false;
         for(var i = 0;i<5;i++)
         {
           var p = points[i];
-          if(p.y>10){
+          if(p.y>20){
             context.beginPath(0);
             context.arc(p.x, p.y, 15, 0, Math.PI * 2);
             context.setFillStyle('#1aad19');
             context.setStrokeStyle(strokeStyle);
             context.fill();
-            eatFood--;
+          }
+          else{
+            clearCanvas = true;
           }
         }
-        wx.drawCanvas({
-          canvasId: 'big-ball',
-          actions: context.getActions()
-        })
-        this.EatFood(eatFood);
+        if(!clearCanvas){
+          wx.drawCanvas({
+            canvasId: 'big-ball',
+            actions: context.getActions()
+          })
+        }
+        else{
+          context.clearActions();
+          console.log("this is in else case");
+          wx.drawCanvas({
+            canvasId:'big-ball',
+            actions: context.getActions()
+          });
+          this.EatFood();
+        }
+        
     },
     
-    EatFood:function(num){
-      //TODO: method not implemented yet.
-      this.eats = this.eats+ num;
-      if(num != 0){
-          wx.request({
-              url:""
-          })
-      }
-
-      //need to post to server side to store the infomation.
-      //i.e. store the infomation into database.
+    EatFood:function(){
+      clearInterval(this.interval);
+      console.log("start request!");
+      wx.request({
+        url:'http://localhost:5000/api/game/update/testuser',
+        method: 'POST',
+        data:'1/5',
+        success:function(res){
+          console.log("success feed");
+          // this.setData({
+          //   eats:eats+5
+          // });
+        }
+      })
     },
 
     onUnload: function () {
