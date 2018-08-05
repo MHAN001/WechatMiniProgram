@@ -94,7 +94,7 @@ Page({
           }
         })
         // wx.request({
-        //   url:'http://localhost:5000/api/game/getpet/testuser',
+        //   url:'https://wechatapiserver.azurewebsites.net/api/game/getpet/testuser',
         //   method: 'GET',
         //   success: function(res){
         //     if(res.data.name != null){

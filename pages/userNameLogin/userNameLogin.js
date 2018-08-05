@@ -74,13 +74,13 @@ Page({
     var username = this.data.inputvalue;
     console.log(username)
     wx.request({
-      url:'http://localhost:5000/api/game/hasuser?username='+username,
+      url:'https://wechatapiserver.azurewebsites.net/api/game/hasuser?username='+username,
       method:'GET',
       success:function(res){
         console.log(res.data);
         if(res.data == 0){
           wx.request({
-            url:'http://localhost:5000/api/game/createuser?username='+username,
+            url:'https://wechatapiserver.azurewebsites.net/api/game/createuser?username='+username,
             method:'GET',
             success:function(res){
               console.log("call back"+username)
@@ -92,7 +92,7 @@ Page({
         }
         else{
           wx.request({
-            url:'http://localhost:5000/api/game/haspet?username='+username,
+            url:'https://wechatapiserver.azurewebsites.net/api/game/haspet?username='+username,
             method:'GET',
             success:function(res){
               if(res.data == 0){

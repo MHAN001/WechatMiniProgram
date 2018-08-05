@@ -40,7 +40,7 @@ Page({
   getPetData:function(){
     var that = this;
     wx.request({
-      url: 'http://localhost:5000/api/game/getpet?username=' + this.data.username,
+      url: 'https://wechatapiserver.azurewebsites.net/api/game/getpet?username=' + this.data.username,
       method: 'GET',
       success: function (res) {
         that.setData({
@@ -116,7 +116,7 @@ Page({
                                   const encryptedData = resRun;
                                   console.log(encryptedData);
                                   wx.request({
-                                      url: 'http://localhost:5000/api/decrypt/' + '123',
+                                      url: 'https://wechatapiserver.azurewebsites.net/api/decrypt/' + '123',
                                       data: {
                                           encryptedData: resRun.encryptedData,
                                           iv: resRun.iv,
@@ -243,7 +243,7 @@ Page({
     clearInterval(this.interval);
     var that = this;
     wx.request({
-      url:'http://localhost:5000/api/game/update/testuser',
+      url:'https://wechatapiserver.azurewebsites.net/api/game/update/testuser',
       method: 'POST',
       data:'1/5',
       success:function(res){

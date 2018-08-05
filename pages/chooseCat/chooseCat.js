@@ -33,7 +33,7 @@ Page({
     var that = this;
     console.log("petname: " + this.data.petname);
     wx.request({
-      url:'http://localhost:5000/api/game/createPet?username='+that.data.username+'&urlnum=1&petname='+that.data.petname,
+      url:'https://wechatapiserver.azurewebsites.net/api/game/createPet?username='+that.data.username+'&urlnum=1&petname='+that.data.petname,
       method:'GET',
       success:function(res){
         console.log("chooscat"+that.data.username)
