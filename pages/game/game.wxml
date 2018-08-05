@@ -8,6 +8,7 @@
     <button class="btn-primary" bindtap="EatFood">Test_EatFood</button>
     <button class="btn-primary" bindtap="getSteps">Foods</button>
       <view wx:for="{{imgUrls}}"  wx:if="{{index == imgId}}" ><!--  -->
+        age:{{age}}
         <image class="cat"  src = "{{item}}"/>
       </view>
   </view>

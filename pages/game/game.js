@@ -3,8 +3,10 @@ var imgId;
 var food;
 Page({
     onLoad: function (option) {
+        console.log("this is option id"+option.id + "this is option age"+ option.age);
         this.setData({
-            imgId : option.id
+            imgId : option.id,
+            age: option.age
         })
     },
     onReady: function() {
@@ -36,6 +38,7 @@ Page({
     },
     data: {
         foods: 0,
+        age: 0,
         eats:0,
         imgUrls: [
             '../../resource/cat.jpg',

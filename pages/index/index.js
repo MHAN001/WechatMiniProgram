@@ -85,6 +85,20 @@ Page({
             console.log(res)
           }
         })
+        wx.request({
+          url:'http://localhost:49660/api/game/getpet/testuser',
+          method: 'GET',
+          success: function(res){
+            if(res.data.name != null){
+              var id = res.data.imageNum
+              wx.redirectTo({
+                url: '../game/game?id='+id+'&age=1'
+              })
+            }
+            else{
+            }
+          }
+        })
       }
     })
   },
