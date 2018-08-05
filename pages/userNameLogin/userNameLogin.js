@@ -67,7 +67,7 @@ Page({
     this.setData({
       inputvalue:e.detail.value,
     });
-    console.log(this.data.inputvalue);
+    //console.log(this.data.inputvalue);
   },
 
   startGame:function(){

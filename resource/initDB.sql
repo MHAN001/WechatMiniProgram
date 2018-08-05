@@ -1,10 +1,9 @@
+drop table if exists Pet_Table;
 drop table if exists User_Table;
 
 create table User_Table(
 	wechatID varchar(50) primary key
 );
-
-drop table if exists Pet_Table;
 
 create table Pet_Table(
 	petID int primary key auto_increment not null,

@@ -2,11 +2,6 @@
 // var imgId;
 // var food;
 var uname;
-var petname;
-var petage;
-var petweight;
-var petexer;
-var imgnum;
 Page({
   data: {
     username: '',
@@ -29,6 +24,12 @@ Page({
     petexercise: 0,
   },
 
+  onReady: function() {
+    this.drawBigFood();
+    var that = this;
+  },
+
+
   onLoad: function (option) {
     uname = option.username;
     var that = this;
@@ -50,9 +51,8 @@ Page({
           imgNum: res.data.imageNum
         })
       }
-    });
+    })
   },
-
 
   onReady: function() {
     //console.log("username="+uname);
