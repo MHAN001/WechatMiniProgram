@@ -43,6 +43,7 @@ Page({
       url: 'https://wechatapiserver.azurewebsites.net/api/game/getpet?username=' + this.data.username,
       method: 'GET',
       success: function (res) {
+        console.log(res.data)
         that.setData({
           age: res.data.age,
           name: res.data.name,
